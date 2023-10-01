@@ -58,6 +58,7 @@ router.get('/profile',(req,res) =>{
       if(err){
         throw err;
       }
+      console.log(user)
       res.json(user);
     });
   }
@@ -66,6 +67,10 @@ router.get('/profile',(req,res) =>{
   }
   // console.log('user info');
   // res.json({token});
+})
+
+router.post('/logout',(req,res)=>{
+    res.cookie('token','').json(true);
 })
 
 module.exports = router;
