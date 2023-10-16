@@ -9,6 +9,9 @@ import RegisterPage from './pages/RegisterPage';
 import axios from 'axios';
 import { UserContextProvider } from './UserContext';
 import AccountPage from './pages/AccountPage';
+import PostBlogPage from './pages/PostBlogPage';
+import BlogDetail from './pages/blogDetail';
+import EditBlog from './pages/editBlog';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 axios.defaults.withCredentials = true;
@@ -23,6 +26,12 @@ function App() {
         <Route path='/login' element = {<LoginPage/>}/>
         <Route path='/register' element = {<RegisterPage/>}/>
         <Route path='/account/:subpage?' element = {<AccountPage/>}/>
+        <Route path='/addBlog' element = {<PostBlogPage/>}/>
+        <Route path='/post/:id' element = {<BlogDetail/>}/>
+        <Route path='/edit/:id' element = {<EditBlog/>}/>
+
+
+
         {/* <Route path='/account/blogs' element = {<AccountPage/>}/>
         <Route path='/account/saved' element = {<AccountPage/>}/> */}
 

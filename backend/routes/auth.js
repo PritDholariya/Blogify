@@ -39,7 +39,9 @@ router.post('/login', async (req, res) => {
           throw err;  
         console.log(token);
         res.cookie('token',token,{ sameSite: 'None', secure: true }).json(userDoc);
-        console.log("cookie is saved or not");
+        //set the session but accesing email in post page through this method is not working properly
+        req.session.userEmail = userDoc.email;
+        console.log(req.session.userEmail); // Debugging: Log the userEmail to the console
       });
     }
     else{
@@ -49,6 +51,8 @@ router.post('/login', async (req, res) => {
   else{
     res.json('not found');
   }
+
+
 })
 
 router.get('/profile',(req,res) =>{
@@ -58,7 +62,7 @@ router.get('/profile',(req,res) =>{
       if(err){
         throw err;
       }
-      console.log(user)
+      // console.log(user)
       res.json(user);
     });
   }

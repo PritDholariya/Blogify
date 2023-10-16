@@ -19,7 +19,11 @@ export default function Header(){
             <div><Link to={'/'}>Home</Link></div>
             
             <div className='border-l border-gray-300'></div>
-            <div>Our story</div>
+            <div>
+              <Link to = {'/addBlog'}>
+                Add Blog
+              </Link>
+              </div>
             <div className='border-l border-gray-300'></div>
             <div>Write</div>
             <button className='bg-primary rounded-full p-1 text-white'>

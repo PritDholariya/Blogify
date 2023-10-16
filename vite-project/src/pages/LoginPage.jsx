@@ -13,7 +13,7 @@ export default function LoginPage(){
     async function handleLoginSubmit(ev) {
         ev.preventDefault();
         try {
-          const {data} = await axios.post('/login', {email,password});
+          const {data} = await axios.post('/login', {email,password},{ withCredentials: true });
           setUser(data);
           alert('Login successful');
           setRedirect(true);
@@ -31,8 +31,8 @@ export default function LoginPage(){
             <div className="mb-64">
             <h1 className="text-4xl text-center my-2">Log In</h1>
             <form className="max-w-md mx-auto" onSubmit={handleLoginSubmit}>
-                <input type="email" placeholder="your@email.com" value={email} onChange={ev => setEmail(ev.target.value)}/>
-                <input type="password" placeholder="your password" value={password} onChange={ev => setPassword(ev.target.value)}/>
+                <input type="email" required placeholder="your@email.com" value={email} onChange={ev => setEmail(ev.target.value)}/>
+                <input type="password" required placeholder="your password" value={password} onChange={ev => setPassword(ev.target.value)}/>
                 <button className="primary">Log In</button>
                 <div className='text-center text-gray-500'>
                     Don't have an account, yet?

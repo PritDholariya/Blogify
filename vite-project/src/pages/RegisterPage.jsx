@@ -8,7 +8,7 @@ export default function RegisterPage() {
   const [email,setEmail] = useState('');
   const [password, setPassword] = useState('');
   
-
+    
   const handleFileInput = (e) => {
     console.log("clicked");
     const photoInput = e.target;

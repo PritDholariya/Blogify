@@ -1,12 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../Header';
-import Post from './post';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Post from './Post'; // Assuming you have a component named Post
 
 export default function IndexPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/blog');
+        setPosts(response.data);
+      } catch (error) {
+        console.error('Display failed', error);
+        // Handle the error or show an error message to the user
+      }
+    };
+    
+    fetchData();
+  }, []);
+  
   return (
-    <main>
-      <Post/>
+    <main className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3">
+      
+      {posts.length > 0 &&
+        posts.map((post,index) => (
+        <Post key={post.id} {...post} index={index} />
+        ))}
     </main>
   );
 }

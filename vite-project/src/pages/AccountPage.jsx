@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import axios from "axios";
 import { Link, Navigate, useParams } from "react-router-dom";
+import IndexPage from "./IndexPage";
+import MyBlogPage from "./myBlogPage";
 
 export default function AccountPage(){
     const [redirect,setRedirect] = useState(null);
@@ -47,10 +49,9 @@ export default function AccountPage(){
     
     return(
         <>
-        <div>Account Page for {user.username} </div>
         <nav className="w-full flex justify-center mt-8 gap-2 font-medium">
             <Link className={LinkClasses('profile')} to={'/account'}>My Profile</Link>
-            <Link className={LinkClasses('blogs')} to={'/account/blogs'}>My Blogs</Link>
+            <Link className={LinkClasses('myblogs')} to={'/account/myblogs'}>My Blogs</Link>
             <Link className={LinkClasses('saved')} to={'/account/saved'}>Saved Blog</Link>
 
         </nav>
@@ -62,6 +63,9 @@ export default function AccountPage(){
                 <button onClick={logout} className="primary max-w-sm mt-6">LogOut</button>
             </div>
             
+        )}
+        {subpage === 'myblogs' && (
+            <MyBlogPage></MyBlogPage>
         )}
         </>
     );
